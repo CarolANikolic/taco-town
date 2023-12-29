@@ -16,28 +16,28 @@
   </form>
   <div id="recipeContainer" class="hidden">
 
-    <% if (!recipeJson || recipeJson.length === 0)  { %>
+    <% if (!recipe || recipe.length === 0)  { %>
       <h2>Pick your favourite taco ingredient 👆</h2>
     <% } else { %>
       <h2>
-        <%= recipeJson.name %>
+        <%= recipe.name %>
       </h2>
 
     <h3>Ingredients:</h3>
     <ul id="ingredientsList">
       <li>
-        <%= recipeJson.ingredients.protein.name %>,
-        <%= recipeJson.ingredients.protein.preparation %>
+        <%= recipe.ingredients.protein.name %>,
+        <%= recipe.ingredients.protein.preparation %>
       </li>
       <li>
-        <%= recipeJson.ingredients.salsa.name %>
+        <%= recipe.ingredients.salsa.name %>
       </li>
-        <li><%= recipeJson.ingredients.toppings[0].name %></li>
+        <li><%= recipe.ingredients.toppings[0].name %></li>
         <li>
           <ul>
-            <% recipeJson.ingredients.toppings[0].ingredients.map(ingredient => { %>
+            <% recipe.ingredients.toppings[0].ingredients.map(ingredient => { %>
               <li>
-                <%= recipeJson.ingredients.toppings[0].quantity %>
+                <%= recipe.ingredients.toppings[0].quantity %>
                 <%= ingredient %>
               </li>
             <% }) %>
