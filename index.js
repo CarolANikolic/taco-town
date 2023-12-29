@@ -1,9 +1,18 @@
 import express from "express";
 import bodyParser from "body-parser";
 import fs from "fs";
+import { fileURLToPath } from "url";
+import path from "path";
 
 const app = express();
 const port = 3000;
+
+app.set('view engine', 'ejs');
+
+const __fileName = fileURLToPath(import.meta.url);
+const __dirPath = path.resolve(__fileName, "../");
+
+app.set("views", path.join(__dirPath, "/views"));
 
 const recipeFilePath = "./recipe.json";
 let recipeJson;
@@ -13,16 +22,19 @@ if (fs.existsSync(recipeFilePath)) {
   recipeJson = JSON.parse(jsonData);
 }
 
+
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.render("index.ejs",  { recipeJson: [] });
 });
 
+
 app.post("/recipe", (req, res) => {
-  //Step 3: Write your code here to make this behave like the solution website.
-  //Step 4: Add code to views/index.ejs to use the recieved recipe object.
+  const requestedRecipe = req.body.choice;
+  
 });
 
 app.listen(port, () => {
