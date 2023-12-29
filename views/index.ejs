@@ -30,15 +30,17 @@
         <%= recipe.ingredients.protein.preparation %>
       </li>
       <li>
-        <%= recipe.ingredients.salsa.name %>
+        Salsa: <%= recipe.ingredients.salsa.name %>
       </li>
-        <li><%= recipe.ingredients.toppings[0].name %></li>
+        <li>
+          Topping: <%= recipe.ingredients.toppings[0].name %>
+        </li>
         <li>
           <ul>
-            <% recipe.ingredients.toppings[0].ingredients.map(ingredient => { %>
+            <% recipe.ingredients.toppings.map(topping => { %>
               <li>
-                <%= recipe.ingredients.toppings[0].quantity %>
-                <%= ingredient %>
+                <%= topping.quantity %> of 
+                <%= topping.name %>
               </li>
             <% }) %>
           </ul>

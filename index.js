@@ -16,6 +16,7 @@ app.set("views", path.join(__dirPath, "/views"));
 
 const recipeFilePath = "./recipe.json";
 let recipeJson;
+let dataRecipe;
 
 if (fs.existsSync(recipeFilePath)) {
   const jsonData = fs.readFileSync(recipeFilePath, "utf-8");
@@ -28,13 +29,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get("/", (req, res) => {
-  res.render("index.ejs",  { recipe: [] });
+  res.render("index.ejs",  { recipe: dataRecipe });
 });
 
 
 app.post("/recipe", (req, res) => {
   const requestedRecipe = req.body.choice;
-  
 });
 
 app.listen(port, () => {
