@@ -35,6 +35,20 @@ app.get("/", (req, res) => {
 
 app.post("/recipe", (req, res) => {
   const requestedRecipe = req.body.choice;
+  
+  switch (requestedRecipe) {
+    case "chicken":
+      dataRecipe = recipeJson[0];
+      break;
+    case "beef":
+      dataRecipe = recipeJson[1];
+      break;
+    case "fish":
+      dataRecipe = recipeJson[2];
+      break;
+  }
+
+  res.redirect("/");
 });
 
 app.listen(port, () => {
