@@ -36,14 +36,12 @@
           Topping: <%= recipe.ingredients.toppings[0].name %>
         </li>
         <li>
-          <ul>
-            <% recipe.ingredients.toppings.map(topping => { %>
-              <li>
-                <%= topping.quantity %> of 
-                <%= topping.name %>
-              </li>
-            <% }) %>
-          </ul>
+          <% recipe.ingredients.toppings.map(topping => { %>
+            <li>
+              <%= topping.quantity %> of 
+              <%= topping.name %>
+            </li>
+          <% }) %>
         </li>
     </ul>
     <% } %>
